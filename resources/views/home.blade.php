@@ -70,6 +70,13 @@
                                             <div class="align-self-center p-2">
                                                 <a > Expiro el {{ $task->expiration }}</a>
                                             </div>
+                                             <div class="align-self-center p-2">
+                                                <form method="POST" action="{{ route('task.delete',$task) }}">
+                                                    {{ csrf_field() }}
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger" type="submit" >ELIMINAR</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
