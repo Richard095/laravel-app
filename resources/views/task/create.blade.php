@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="card p-3">
                <div class="form">
-                    <form method="POST" action="{{ route('task.create') }}" >
+                    <form method="POST" action="{{ route('task.create',$user_id) }}" >
                          {{ csrf_field() }}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Titulo</label>

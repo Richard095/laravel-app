@@ -6,7 +6,9 @@
         <div class="col-md-8 col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-end">
-                    <a href="/task" class="text-white btn btn-primary"> Nueva tarea</a>
+                    @if (Auth::user()->rol === 'Administrador')
+                         <a href="/task" class="text-white btn btn-primary"> Nueva tarea</a>
+                    @endif
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -35,8 +37,6 @@
                                                 </div> --}}
 
                                                 <div class="align-self-center  d-flex justify-content-end">
-
-                                                    <a class="btn btn-primary m-1" href="{{ route('task.edit', $task) }}">Actualizar</a>
 
                                                     <form method="POST" action="{{ route('endTask',$task) }}">
                                                         {{ csrf_field() }}

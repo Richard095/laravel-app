@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,12 @@ class HomeController extends Controller
     public function index()
     {
 
-        $tasks = Auth::User()->tasks;
+        if (Auth::User()->rol === 'Estudiante') {
+            $tasks = Auth::User()->tasks;
+            return view('home')->with('tasks', $tasks);
+        }
 
-        return view('home')->with('tasks', $tasks);
+        $users = User::All();
+        return view('user.index')->with('users', $users);
     }
 }

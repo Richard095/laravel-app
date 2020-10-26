@@ -15,13 +15,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/all-tasks', 'TaskController@allTasks')->name('all.tasks');
+
 Route::get('/tasks-ended', 'TaskController@index')->name('task.ended');
 
-Route::get('/task', 'TaskController@create')->name('task');
+Route::get('/task/{user_id}', 'TaskController@create')->name('task');
 
-Route::post('/task-create', 'TaskController@store')->name('task.create');
+Route::get('/task/{task}/editar', 'TaskController@edit')->name('task.edit');
 
-Route::get('/task/{task}', 'TaskController@edit')->name('task.edit');
+Route::post('/task-create/{user_id}', 'TaskController@store')->name('task.create');
+
+
 
 Route::patch('/task/{task}', 'TaskController@update')->name('edit');
 

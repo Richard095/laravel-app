@@ -28,17 +28,17 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('task.create');
+        return view('task.create')->with('user_id', $id);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $user_id)
     {
-
+        //Auth::User()->id
         $expiration = Carbon::parse($request->expiration)->format('Y-m-d');
 
-        $extra_data = ['user_id' => Auth::User()->id, 'completed' => 0, 'expiration' => $expiration];
+        $extra_data = ['user_id' => $user_id, 'completed' => 0, 'expiration' => $expiration];
 
         $fields = $request->validate(([
             'title' => 'required',
@@ -92,5 +92,12 @@ class TaskController extends Controller
             ]
         );
         return redirect()->route('home');
+    }
+
+
+    public function allTasks()
+    {
+        $tasks = Task::with('user')->get();
+        return view('user.tasks', ['tasks' => $tasks]);
     }
 }
