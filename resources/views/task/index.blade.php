@@ -17,36 +17,30 @@
                         </div>
                     @endif
                     @foreach ($tasks as $task)
-                        @if ($task->completed === 1)
-                            <div class="card mt-2">
-                                <div class="card-content">
-                                    <div class="card-body cleartfix">
-                                        <div class="media align-items-stretch">
-                                            <div class="align-self-center">
-                                                <i class="icon-speech warning font-large-2 mr-2"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4>{{ $task->title }}</h4>
-                                                <span>{{ $task->category }}</span>
-                                            </div>
-                                            <div class="align-self-center p-2">
-                                                <a >COMPLETADO</a>
-                                            </div>
+                            @if ($task->completed === 1)
+                                <div class="card mt-2 ">
+                                    <div class="card-content">
+                                        <div class="card-body cleartfix">
+                                                <div class="media-body">
+                                                    <p class="text-primary">{{ $task->title }}</p>
 
-                                            <div class="align-self-center p-2">
-                                                <form method="POST" action="{{ route('task.delete',$task) }}">
-                                                    {{ csrf_field() }}
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger" type="submit" >ELIMINAR</button>
-                                                </form>
-                                            </div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span class="align-self-center p-2">{{ $task->category }}</span>
+                                                         <div class="align-self-center p-2">
+                                                            <form method="POST" action="{{ route('task.delete',$task) }}">
+                                                                {{ csrf_field() }}
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger" type="submit" >ELIMINAR</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
 
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
-                    @endforeach
+                            @endif
+                        @endforeach
 
                 </div>
             </div>
