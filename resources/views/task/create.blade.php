@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="actions  d-flex justify-content-end">
-                            <button type="button" class="btn btn-warning m-2 text-white">Cancelar</button>
+                            <a href="/home" type="button" hre class="btn btn-warning m-2 text-white">Cancelar</a>
                             <button type="submit" class="btn btn-primary m-2">Guardar</button>
                         </div>
                     </form>
